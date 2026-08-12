@@ -71,7 +71,7 @@ Docker host --- The operating system on which docker is installed is called as t
 
 Docker client --- This is a bag round software which accepts the docker commands and passes them to another baground process called as the docker deamon
 
-Docker deamon --- This process accepts the commands coming from docker client and routes them to either docker images or containers or the docker registry.
+Docker deamon --- 	This process accepts the commands coming from docker client and routes them to either docker images or containers or the docker registry.
 
 Docker registry --- This is a repository where we can store docker images, this is of two types Public & Private
 
@@ -83,100 +83,135 @@ Private registry is created within out own servers and only our team members can
 # Important Docker Commands
 ===========================
 
-Working on Images
+# Working on Images
 ----------------------
 
 1.	To download a docker images
-		docker pull image_name
 
-2.	 To upload a docker image
-		docker push image_name
+		docker pull image name
+
+2.	To upload a docker image
+
+		docker push image name
 
 3.	To see the list of docker images present in out docker host
+
 		docker images or docker image ls
 
-4.	 To delete a docker image
+4.	To delete a docker image
+
 		docker rmi image_id/image_name
 
-5.	 To create docker image from a container
+5. 	To create docker image from a container
+
 		docker commit container_id/ container _name new _image_name
 
-6.	 To create a docker image from a docker file
+6.	To create a docker image from a docker file
+
 		docker build -t new_image_name
 		note . represents current working directory
 
-7.	 To delete all unused docker images
+7. To delete all unused docker images
+
 		docker system prune -a
 
-8.	 To save a docker image as a tar or archived file
+8.	To save a docker image as a tar or archived file
+
 		docker save image1 image2 ...
 
 9	 To get detailed info about a docker image
+		
 		docker image inspect image_name / image_id
 
-Working on containers
+# Working on containers
 -------------------------------
 
 10.	To see the list running containers
+		
 		docker containers ls
 
 11.	To see the list of all containers (running and stopped)
+		
 		docker ps -a
 
 12.	To start a stopped containers
-		docker start container_name / container_id
+		
+		docker start container name / container id
 
 13.	To stop a running container
+		
 		docker stop container_name / container_id
 
 14.	To restart a container
+		
 		docker restart container_name / container_id
+	
 	To restart after 20 seconds
+		
 		docker restart -t 20 container_name / container_id
 
 15.	To delete a stopped container
+		
 		docker rm container_name / container_id
 
 16.	To delete a running container
+		
 		docker rm -f container_name / container_id
 
 17.	To stop all running container
+		
 		docker stop $(docker ps -aq)
 
 18.	To delete all stopped containers
+		
 		docker rm $(docker ps -aq)
 
 19.	To delete all containers (running & stopped)
+		
 		docker rm -f $(docker ps -aq)
 
 20.	To get detailed logs of a container
+		
 		docker logs container_name / container_id
 
 21.	To see complete info about a container
+		
 		docker inspect container_name / container_id
 
 22.	To see the ports used by a container
+		
 		docker port container_name / container_id
 
 23.	To come out of a container without exit
+		
 		ctrl+p , ctrl+q
 
 24.	To go back into the same container
+		
 		docker attach container_name / container_id
 
 25.	To create  a container
 		docker run image_name
 		run command options
 		------------------------
-		--name Gives a name to the container
+		
+		--name 		Gives a name to the container
+   	
 		-d 			Run the container in detached mode in background (as a demon)
+
 		-it			Used for opening interactive terminal in the container
+		
 		--link		Used for linking multiple containers to create micro services architecture
+		
 		--network 	Used for running containers on a specific network
+		
 		-e			Used for passing environment to container
-        	--volumes 	from used for sharing between containers
+
+   		--volumes 	from used for sharing between containers
+		
 		-p			Used for port mapping le it will map the container port with the docker host port so that it can be used for external communication
-		Eg: -p 8080:80 here 80 is the container port and is called as internal port and 8080 is docker host port and it is called as external port
+		
+		Eg: -p 		8080:80 here 80 is the container port and is called as internal port and 8080 is docker host port and it is called as external port
 
 		-p			Used for automatic port mapping, The internal port of the container will be automatically mapped with some port on docker host which is greater than 30000
 
@@ -189,34 +224,41 @@ Working on containers
 		-rm			To delete a container on exit
 
 	To enter into the container
+		
 		docker exec -it container_name/contauiner_id
 	
 	
-Working on docker networks
-======================
+# Working on docker networks
+============================
 
 26.	To see the list of al the docker networks
+		
 		docker network ls
 
 27.	To create a new docker network
+		
 		docker network create --drive drive_name  network_name
 
 28.	To get detailed info about a network
+		
 		docker network inspect network_name / network_id
 
 29.	To delete a network
+		
 		docker network rm network_name / network_id
 
 30.	To attach a running container to a network
+		
 		docker network connect network_name / network_id
 								container_id / container_name
 
 31.	To disconnect a container from a network
+		
 		docker network disconnect network_name / network_id
 								container_id / container_name
 
 
-Three types of networks in docker
+# Three types of networks in docker
 -----------------------------------
 
 1.	Bridge:	A default network which can create own virtual network and communicate with each other no connection to host machine
@@ -226,19 +268,23 @@ Three types of networks in docker
 3.	None:	There will no connectivity and no internet, till will use in some high security containers usage
 
 
-Working on docker volumes
-======================
+# Working on docker volumes
+=========================
 
 32.	To see the list of docker volumes
+		
 		docker volume ls
 	
 33.	To create a volume
+		
 		docker volume create volume_name
 
 34.	To get detailed info about a docker volume
+	
 		docker volume inspect volume_name / volume_id
 
 35.	To delete a volume
+    
 		docker volume rm volume_name / volume_id
 
 ===========================================
