@@ -346,10 +346,11 @@ Linux file system has tree structure
 		eg: touch, mkdir, ls
 
 3.	sbin -- sbin containers system binaries
+		
 		user -- 1. Normal user, 2. Root user
 
 4.	etc -- This directory contains all system configuration files
-		  This configuration is used by system
+			  This configuration is used by system
 
 		eg:	 /etc/passwd -- all user information in this file
 			/etc/group -- all group information is present in this file
@@ -358,8 +359,9 @@ Linux file system has tree structure
 	only root user is allowed to make changes here
 
 5.	tmp -- tmp means temporary directory
-		- if ant files or directory required just for temporary purpose then we have to create such files or folder tmp directory
-		- files from /tmp/ directory are automatically deleted after shutdown
+		
+		 - if ant files or directory required just for temporary purpose then we have to create such files or folder tmp directory
+		 - files from /tmp/ directory are automatically deleted after shutdown
 
 6.	dev -- device drivers
 		-- All device related files will be stored in /dev
