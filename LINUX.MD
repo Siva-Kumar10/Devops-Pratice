@@ -12,39 +12,38 @@ Storage Management:	Management of how data us stored in secondary storage such a
 Device Management: 	Managing connections of the I/O devices and which device process get how much time. The program responsible for these tasks is known as the I/O controller.
 
 
-LINUX BOOT PROCESS
-===================
+# LINUX BOOT PROCESS
+====================
 
 Linux Boot Process works in 6 steps
 
 BIOS -----> MBR ------> GRUB -------> KERNAL -------> INIT (System memory)
 
-1.	BIOS is basic input / output system
-2.	It is the 1st program which execute in RAM
-3.	It will check all the hardware component e.g. drivers,
+	1.	BIOS is basic input / output system
+	2.	It is the 1st program which execute in RAM
+	3.	It will check all the hardware component e.g. drivers,
 
-MBR
-====
+# MBR
+======
 
-1.	Master Boot Record, it is the first sector of the Hard Disk
-2.	It will store all the information which required to load the OS.
-3.	The size of this MBR is 512 bites, out of this initial 446 contains Boot Loader, 64 bytes contains Partition, & remaining 2 bytes  it contains all the error checking mechanism.
+	1.	Master Boot Record, it is the first sector of the Hard Disk
+	2.	It will store all the information which required to load the OS.
+	3.	The size of this MBR is 512 bites, out of this initial 446 contains Boot Loader, 64 bytes contains Partition, & remaining 2 bytes  it contains all the error checking mechanism.
 
-
-GRUB
-=====
-
-1.	Grand Unified Boot Loader
-2.	Loads kernel and initg image
-3.	Once grub is loaded transfer the control to the kernel
-
-KERNAL
+# GRUB
 =======
 
-Loads the file system
-Loads the drivers to load the file system
-mount all the partition
-starts the first process --- init / systems
+	1.	Grand Unified Boot Loader
+	2.	Loads kernel and initg image
+	3.	Once grub is loaded transfer the control to the kernel
+
+# KERNAL
+=========
+
+		Loads the file system
+		Loads the drivers to load the file system
+		mount all the partition
+		starts the first process --- init / systems
 
 Run level program
 
@@ -342,8 +341,10 @@ Unix Architecture
 Linux file system has tree structure
 
 1.	/ -- root directory  - Topmost directory
+
 2.	bin -- bin means binary, it contains all the binary executable related to Linux command
-		eg: touch, mkdir, ls
+			
+			eg: touch, mkdir, ls
 
 3.	sbin -- sbin containers system binaries
 		
@@ -358,12 +359,13 @@ Linux file system has tree structure
 
 	only root user is allowed to make changes here
 
-5.	tmp -- tmp means temporary directory
+5.	*tmp -- tmp means temporary directory*
 		
 		 - if ant files or directory required just for temporary purpose then we have to create such files or folder tmp directory
 		 - files from /tmp/ directory are automatically deleted after shutdown
 
-6.	dev -- device drivers
+6.	*dev -- device drivers*
+
 		-- All device related files will be stored in /dev
 		-- B using this files, we can communicate with that device
 		-- hd - hard drive/distribution
@@ -371,38 +373,46 @@ Linux file system has tree structure
 		monitor -- standard output device file
 
 
-7.	mnt -- mounting
+7.	*mnt -- mounting*
+
 		- 16 gb pen drivers
 	eg	- mkdir - pen_drive
 			umount for remove
 
-8.	media -- The files or drive automatic mounting will be placed in this directory
+8.	*media -- The files or drive automatic mounting will be placed in this directory*
 
-9.	opt -- optional
+9.	*opt -- optional*
+			
 		- This directory contains all 3rd party software instillation files eg: Google chrome
 
-10.	lib -- lib means library
+10.	*lib -- lib means library*
+
 		- This library which are required by our application are stored in this lib directory
 
-11.	var -- variable data
+11.	*var -- variable data*
+
 		- If any data which is keep on changing, such type of variable data is placed here
 
-12.	usr - user directory
+12.	*usr - user directory*
+
 		- This directory contains all user related software
 
-13.	home - as Linux is multiuser operating system, for every user there is a directory created under /home to hold specific data
+13.	*home - as Linux is multiuser operating system, for every user there is a directory created under /home to hold specific data*
+
 		- /home/john
 		- /home/alex
 
-14.	-root	 - it is home directory for root user
+14.	*-root	 - it is home directory for root user*
 
-15.	proc -- proc means process
-	eg	-- in Linux multiple process are running, for every process there is unique id, for every process a separate directory is created to hold process related information, That directory is created under "proc" directory.
+15.	*proc -- proc means process*
+	
+		eg	-- in Linux multiple process are running, for every process there is unique id, for every process a separate directory is created to hold process related information, That directory is created under "proc" directory.
 
-16.	boot -- files which are required to boot the Linux OS are stored inside the boot directory.
+16.	*boot -- files which are required to boot the Linux OS are stored inside the boot directory*.
 
 
-ls
+# ls
+=====
 
   List information about the FILEs (the current directory by default).  Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
 
@@ -574,51 +584,51 @@ ls
 10 Linux Commands that you must commonly use
 =================================
 
-1.	ls	 (-a, -l, -ltr) basically used to see the available files
-2.	cd
-3.	cat, less ,tail
-4.	grep
-5.	top, htop, p3
-6.	df-4 (du-sh)
-4.	systemctl
-8.	chmod / chown
-9.	scp / rsync
-10.	find
+	1.	ls	 (-a, -l, -ltr) basically used to see the available files
+	2.	cd
+	3.	cat, less ,tail
+	4.	grep
+	5.	top, htop, p3
+	6.	df-4 (du-sh)
+	4.	systemctl
+	8.	chmod / chown
+	9.	scp / rsync
+	10.	find
 
 touch "myfile$(date +%d%m%y).log"
 
 shortcut for date 
 
-date [-d|--date] [-f|--file] [-I|--iso-8601] [--resolution] [-R|--rfc-email] [--rfc-3339] [--debug] [-r|--reference] [-s|--set] [-u|--universal] [-h|--help] [-V|--version]
+*date [-d|--date] [-f|--file] [-I|--iso-8601] [--resolution] [-R|--rfc-email] [--rfc-3339] [--debug] [-r|--reference] [-s|--set] [-u|--universal] [-h|--help] [-V|--version]*
 
-find . -name <file name first letter and star symbol combine>  = To find the file
+	find . -name <file name first letter and star symbol combine>  = To find the file
 
-find . -name iname <file name first letter and star symbol combine> = To find the file here in i name "i" stands for ignore of file name (probably use this when we forgot the file name but having idea about the stating name of the file.
+	find . -name iname <file name first letter and star symbol combine> = To find the file here in i name "i" stands for ignore of file name (probably use this when we forgot the file name but having idea about the stating name of the file.
 
 creating a group in Linux
-=================
+=========================
 
-sudo addgroup <namegroup> = It will create a new group in etc directory
+	*sudo addgroup <namegroup> = It will create a new group in etc directory*
 
-sudo adduser --ingroup admingroup siva  = This is adding the new user to the existing group
+	*sudo adduser --ingroup admingroup siva  = This is adding the new user to the existing group*
 
-chgrp  --->	To change the group for the existing directory or file.
+	chgrp  --->	To change the group for the existing directory or file.
 
 		sudo chgrp <groupname> <directory name / file name>  and press enter
 
-To switch the user ---> sudo su - (or) sudo su -i
+	To switch the user ---> sudo su - (or) sudo su -i
 
 
-Types of permission in Linux
-====================
+*Types of permission in Linux*
+==============================
 
-1.	r	--	read
-2.	w	--	wright
-3.	x	--	execute
-4	-	--	no permission
-5.	+	--	to add the permission
-6.	-	--	to remove the permission
-7	=	--	assignment
+	1.	r	--	read
+	2.	w	--	wright
+	3.	x	--	execute
+	4	-	--	no permission
+	5.	+	--	to add the permission
+	6.	-	--	to remove the permission
+	7	=	--	assignment
 
 Total 9 permissions in Linux
 
@@ -633,63 +643,66 @@ chmod u+x, g+x, o+w  <filename>
 
 Numeric format
 
-0	-->	000	-->	No permission
-1	-->	001	-->	Execute
-2	-->	010	-->	Write
-3	-->	011	-->	Write, Read
-4	-->	100	-->	Read
-5	-->	101	-->	Read, Execute
-6	-->	110	-->	Read, write
-7	-->	117	-->	Read, write, execute
+		0	-->	000	-->	No permission
+		1	-->	001	-->	Execute
+		2	-->	010	-->	Write
+		3	-->	011	-->	Write, Read
+		4	-->	100	-->	Read
+		5	-->	101	-->	Read, Execute
+		6	-->	110	-->	Read, write
+		7	-->	117	-->	Read, write, execute
 
-for i in {1..5}; do mv file$i.txt file$i.yml: done   creating multiple files with touch command and converting some of them in to different format
+*for i in {1..5}; do mv file$i.txt file$i.yml: done   creating multiple files with touch command and converting some of them in to different format*
 
 
-:%s/word1/word2/g - to globally replace the word1 from word2
+		:%s/word1/word2/g - to globally replace the word1 from word2
  
-u --> to undo the last change made
+		u --> to undo the last change made
 
-to install any package in ubuntu -->	sudo apt install <package name>
+		to install any package in ubuntu -->	sudo apt install <package name>
 
 Vi editor --> shortcuts
 
-:wq	-->	To save the file in vi editor
+		:wq	-->	To save the file in vi editor
 
-q!	-->	Unsave the work and come out of the vi editor
+		q!	-->	Unsave the work and come out of the vi editor
 
-:%s/<word name to replace>/<replacable name>/g
+		:%s/<word name to replace>/<replacable name>/g
+
+# Common Shortcuts
+===================
 
 
-df -h		-->	to see the memory in the drive
+		df -h		-->	to see the memory in the drive
 
-free -h 	-->	to see how much ram is used and how much is available
+		free -h 	-->	to see how much ram is used and how much is available
 
-top		-->	how many process is running in the system 
+		top		-->	how many process is running in the system 
 
-gzip		-->	to zip the file 
+		gzip		-->	to zip the file 
 
-gunzip	-->	to un zip the file
+		gunzip	-->	to un zip the file
 
-tar -cvf my-files.tar file1.txt file2.txt	-->	to Archive the files
+		tar -cvf my-files.tar file1.txt file2.txt	-->	to Archive the files
 
-cat /etc/os-release	-->	to check the available os in the Linux system
+		cat /etc/os-release	-->	to check the available os in the Linux system
 
 Package manager	-->	Installing Software
 ===============================
 
 Package management tools	-->	used to install, upgrade, delete, view package by using this tools
 
-1.	yum	-->	redhat based Linux
+		1.	yum	-->	redhat based Linux
 
-2.	dnf	-->	redhat and rest of the linux
+		2.	dnf	-->	redhat and rest of the linux
 
-3.	rpm	-->	redhat and rest of the linux		-- the name stands for redhat package manager
+		3.	rpm	-->	redhat and rest of the linux		-- the name stands for redhat package manager
 
-4.	apt	-->	ubuntu based linux
+		4.	apt	-->	ubuntu based linux
 
 how to install the package		-->	by using the following command
 
-	eg: yum install nginx
+		eg: yum install nginx
 
 
 Cron jobs
