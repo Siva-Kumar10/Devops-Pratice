@@ -54,12 +54,12 @@ The Linux boot process is the sequence of events that takes place from the momen
 
 The Linux boot process consists of 6 major stages:
 
-BIOS/UEFI
-Boot Loader (GRUB)
-Linux Kernel
-Initramfs (Initial RAM Filesystem)
-Systemd (Init Process)
-Login Prompt / Desktop
+		BIOS/UEFI
+		Boot Loader (GRUB)
+		Linux Kernel
+		Initramfs (Initial RAM Filesystem)
+		Systemd (Init Process)
+		Login Prompt / Desktop
 
 Power ON
     │
@@ -87,32 +87,32 @@ Start Services
     ▼
 Login Screen / Terminal
 
-Step 1: Power ON the Computer
+# Step 1: Power ON the Computer
 
-When you press the Power Button, the CPU receives power and begins executing firmware instructions stored on the motherboard.
+	When you press the Power Button, the CPU receives power and begins executing firmware instructions stored on the motherboard.
 
 At this stage:
 
-CPU starts execution.
-RAM is initialized.
-Motherboard firmware starts.
+		CPU starts execution.
+		RAM is initialized.
+		Motherboard firmware starts.
 
-No operating system is loaded yet.
+		No operating system is loaded yet.
 
-Step 2: BIOS or UEFI
+# Step 2: BIOS or UEFI
 
-What is BIOS?
+# What is BIOS?
 
-BIOS (Basic Input Output System) is firmware stored on the motherboard.
+	BIOS (Basic Input Output System) is firmware stored on the motherboard.
 
-Modern computers usually use UEFI (Unified Extensible Firmware Interface) instead of BIOS.
+	Modern computers usually use UEFI (Unified Extensible Firmware Interface) instead of BIOS.
 
-Responsibilities
-Performs Power-On Self-Test (POST).
-Detects hardware devices.
-Initializes CPU, RAM, keyboard, storage devices.
-Checks boot order.
-Finds a bootable disk.
+# Responsibilities
+		Performs Power-On Self-Test (POST).
+		Detects hardware devices.
+		Initializes CPU, RAM, keyboard, storage devices.
+		Checks boot order.
+		Finds a bootable disk.
 
 Example boot order:
 
@@ -122,20 +122,20 @@ Hard Disk
 DVD
 Network
 
-After POST completes successfully, BIOS/UEFI transfers control to the boot loader.
+# After POST completes successfully, BIOS/UEFI transfers control to the boot loader.
 
-POST (Power-On Self-Test)
+	POST (Power-On Self-Test)
 
 During POST, the firmware checks:
 
-CPU
-RAM
-Keyboard
-Mouse
-Graphics card
-Hard disks
-SSDs
-USB devices
+		CPU
+		RAM
+		Keyboard
+		Mouse
+		Graphics card
+		Hard disks
+		SSDs
+		USB devices
 
 If hardware fails:
 
@@ -146,87 +146,89 @@ Error Messages
 
 Example:
 
-Memory Error
-No Boot Device Found
-Keyboard Failure
+		Memory Error
+		No Boot Device Found
+		Keyboard Failure
 
-Step 3: Boot Loader (GRUB)
+# Step 3: Boot Loader (GRUB)
 
-After BIOS/UEFI identifies the bootable device, it loads the boot loader.
+		After BIOS/UEFI identifies the bootable device, it loads the boot loader.
 
-The most common Linux boot loader is GRUB (GNU GRand Unified Bootloader).
+		The most common Linux boot loader is GRUB (GNU GRand Unified Bootloader).
 
-Responsibilities of GRUB
-Displays the boot menu.
-Loads the Linux kernel.
-Loads the initial RAM filesystem (initramfs).
-Passes boot parameters to the kernel.
-Allows selecting different kernels.
-Supports dual boot (e.g., Linux and Windows).
+# Responsibilities of GRUB
+		
+		Displays the boot menu.
+		Loads the Linux kernel.
+		Loads the initial RAM filesystem (initramfs).
+		Passes boot parameters to the kernel.
+		Allows selecting different kernels.
+		Supports dual boot (e.g., Linux and Windows).
 
-Step 4: Linux Kernel
+# Step 4: Linux Kernel
 
-The kernel is the core of the Linux operating system.
+		The kernel is the core of the Linux operating system.
 
-After GRUB loads the kernel into RAM:
+		After GRUB loads the kernel into RAM:
 
-Kernel decompresses itself.
-Initializes CPU.
-Initializes memory.
-Detects hardware.
-Loads drivers.
-Mounts temporary root filesystem.
-Starts the first process.
+		Kernel decompresses itself.
+		Initializes CPU.
+		Initializes memory.
+		Detects hardware.
+		Loads drivers.
+		Mounts temporary root filesystem.
+		Starts the first process.
 
-Responsibilities of Kernel
+# Responsibilities of Kernel
+	
 Memory Management
 
-Allocates RAM.
+		Allocates RAM.
 
-Process Management
+		Process Management
 
-Creates processes.
+		Creates processes.
 
-Device Driver Initialization
+		Device Driver Initialization
 
 Loads drivers for:
 
-Keyboard
-Mouse
-USB
-Network
-Storage
-CPU Scheduling
+		Keyboard
+		Mouse
+		USB
+		Network
+		Storage
+		CPU Scheduling
 
-Controls CPU execution.
+	Controls CPU execution.
 
-Filesystem Initialization
+	Filesystem Initialization
 
-Mounts the root filesystem
+	Mounts the root filesystem
 
-Step 5: Initramfs (Initial RAM Filesystem)
+# Step 5: Initramfs (Initial RAM Filesystem)
 
-Before mounting the real root filesystem, Linux loads initramfs into memory.
+	Before mounting the real root filesystem, Linux loads initramfs into memory.
 
-It contains:
+	It contains:
 
-Essential drivers
-Storage drivers
-Filesystem modules
-RAID/LVM support
-Disk encryption support
+		Essential drivers
+		Storage drivers
+		Filesystem modules
+		RAID/LVM support
+		Disk encryption support
 
-Without initramfs, the kernel may not be able to locate or mount the root filesystem.
+	Without initramfs, the kernel may not be able to locate or mount the root filesystem.
 
-Step 6: Mount Root Filesystem
+# Step 6: Mount Root Filesystem
 
-The kernel mounts the root (/) filesystem from the disk.
+	The kernel mounts the root (/) filesystem from the disk.
 
-Common filesystems include:
+	Common filesystems include:
 
-ext4
-XFS
-Btrfs
+		ext4
+		XFS
+		Btrfs
 
 The root filesystem contains directories such as:
 
@@ -249,21 +251,22 @@ The root filesystem contains directories such as:
 ├── usr
 └── var
 
-Step 7: systemd (Init Process)
+# Step 7: systemd (Init Process)
 
-After mounting the root filesystem, the kernel starts systemd, which is the first userspace process.
+	After mounting the root filesystem, the kernel starts systemd, which is the first userspace process.
 
-Responsibilities of systemd
-Starts system services.
-Starts networking.
-Mounts filesystems.
-Starts logging services.
-Starts cron timers.
-Starts SSH server.
-Starts graphical desktop (if installed).
+	Responsibilities of systemd
+
+		Starts system services.
+		Starts networking.
+		Mounts filesystems.
+		Starts logging services.
+		Starts cron timers.
+		Starts SSH server.
+		Starts graphical desktop (if installed).
 
 
-Complete Linux Boot Sequence
+# Complete Linux Boot Sequence
 
 Power Button
       │
@@ -325,33 +328,34 @@ Desktop or Shell
 
 
 
-Kernel
-=====
+# Kernel
+=========
 
-1.	Heart if OS. interface / middleman of usrs application and hardware
-2.	It is responsible for executing commands
-3.	It is responsible for communicating with hardware, memory management, process management.
+	1.	Heart if OS. interface / middleman of usrs application and hardware
+	2.	It is responsible for executing commands
+	3.	It is responsible for communicating with hardware, memory management, process management.
 
 		$ -- non root user
 		# -- 	     root user / super user
 
-Unix Architecture
-=============
+# Unix Architecture
+===================
 
 Linux file system has tree structure
 
-1.	/ -- root directory  - Topmost directory
+#	1.	/ -- root directory  - Topmost directory
 
-2.	bin -- bin means binary, it contains all the binary executable related to Linux command
+#	2.	bin -- bin means binary, it contains all the binary executable related to Linux command
 			
 			eg: touch, mkdir, ls
 
-3.	sbin -- sbin containers system binaries
+#	3.	sbin -- sbin containers system binaries
 		
 		user -- 1. Normal user, 2. Root user
 
-4.	etc -- This directory contains all system configuration files
-			  This configuration is used by system
+#	4.	etc -- This directory contains all system configuration files
+	
+				This configuration is used by system
 
 		eg:	 /etc/passwd -- all user information in this file
 			/etc/group -- all group information is present in this file
@@ -359,12 +363,12 @@ Linux file system has tree structure
 
 	only root user is allowed to make changes here
 
-5.	*tmp -- tmp means temporary directory*
+# 5.	*tmp -- tmp means temporary directory*
 		
 		 - if ant files or directory required just for temporary purpose then we have to create such files or folder tmp directory
 		 - files from /tmp/ directory are automatically deleted after shutdown
 
-6.	*dev -- device drivers*
+# 6.	*dev -- device drivers*
 
 		-- All device related files will be stored in /dev
 		-- B using this files, we can communicate with that device
@@ -373,42 +377,42 @@ Linux file system has tree structure
 		monitor -- standard output device file
 
 
-7.	*mnt -- mounting*
+# 7.	*mnt -- mounting*
 
-		- 16 gb pen drivers
-	eg	- mkdir - pen_drive
+			- 16 gb pen drivers
+		eg	- mkdir - pen_drive
 			umount for remove
 
-8.	*media -- The files or drive automatic mounting will be placed in this directory*
+# 8.	*media -- The files or drive automatic mounting will be placed in this directory*
 
-9.	*opt -- optional*
+# 9.	*opt -- optional*
 			
 		- This directory contains all 3rd party software instillation files eg: Google chrome
 
-10.	*lib -- lib means library*
+# 10.	*lib -- lib means library*
 
 		- This library which are required by our application are stored in this lib directory
 
-11.	*var -- variable data*
+# 11.	*var -- variable data*
 
 		- If any data which is keep on changing, such type of variable data is placed here
 
-12.	*usr - user directory*
+# 12.	*usr - user directory*
 
 		- This directory contains all user related software
 
-13.	*home - as Linux is multiuser operating system, for every user there is a directory created under /home to hold specific data*
+# 13.	*home - as Linux is multiuser operating system, for every user there is a directory created under /home to hold specific data*
 
 		- /home/john
 		- /home/alex
 
-14.	*-root	 - it is home directory for root user*
+# 14.	*-root	 - it is home directory for root user*
 
-15.	*proc -- proc means process*
+# 15.	*proc -- proc means process*
 	
 		eg	-- in Linux multiple process are running, for every process there is unique id, for every process a separate directory is created to hold process related information, That directory is created under "proc" directory.
 
-16.	*boot -- files which are required to boot the Linux OS are stored inside the boot directory*.
+# 16.	*boot -- files which are required to boot the Linux OS are stored inside the boot directory*.
 
 
 # ls
@@ -581,7 +585,7 @@ Linux file system has tree structure
 ===========================================
 
 
-10 Linux Commands that you must commonly use
+# 10 Linux Commands that you must commonly use
 =================================
 
 	1.	ls	 (-a, -l, -ltr) basically used to see the available files
@@ -605,7 +609,7 @@ shortcut for date
 
 	find . -name iname <file name first letter and star symbol combine> = To find the file here in i name "i" stands for ignore of file name (probably use this when we forgot the file name but having idea about the stating name of the file.
 
-creating a group in Linux
+# creating a group in Linux
 =========================
 
 	*sudo addgroup <namegroup> = It will create a new group in etc directory*
@@ -619,7 +623,7 @@ creating a group in Linux
 	To switch the user ---> sudo su - (or) sudo su -i
 
 
-*Types of permission in Linux*
+# *Types of permission in Linux*
 ==============================
 
 	1.	r	--	read
@@ -661,7 +665,7 @@ Numeric format
 
 		to install any package in ubuntu -->	sudo apt install <package name>
 
-Vi editor --> shortcuts
+# Vi editor --> shortcuts
 
 		:wq	-->	To save the file in vi editor
 
